@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.30225.117
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniCStructure", "MiniCStructure\MiniCStructure.csproj", "{09F509BA-37BC-40FA-BF72-0B2A86D1CF25}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniCStructureDB", "MiniCStructureDB\MiniCStructureDB.csproj", "{270ECC65-C3D1-49A9-985C-7E06E82893A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiniCStructureRepository", "MiniCStructureRepository\MiniCStructureRepository.csproj", "{5BC46720-3575-408F-9114-EE11F31C8C87}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{09F509BA-37BC-40FA-BF72-0B2A86D1CF25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{09F509BA-37BC-40FA-BF72-0B2A86D1CF25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{09F509BA-37BC-40FA-BF72-0B2A86D1CF25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270ECC65-C3D1-49A9-985C-7E06E82893A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270ECC65-C3D1-49A9-985C-7E06E82893A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270ECC65-C3D1-49A9-985C-7E06E82893A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270ECC65-C3D1-49A9-985C-7E06E82893A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5BC46720-3575-408F-9114-EE11F31C8C87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5BC46720-3575-408F-9114-EE11F31C8C87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5BC46720-3575-408F-9114-EE11F31C8C87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5BC46720-3575-408F-9114-EE11F31C8C87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
