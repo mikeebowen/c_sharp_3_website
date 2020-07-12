@@ -28,10 +28,20 @@ namespace MiniCStructureRepository.Models
         {
             return mapper.Map<User, UserDTO>(user);
         }
+        private static User convertToUser(UserDTO userDTO)
+        {
+            return mapper.Map<UserDTO, User>(userDTO);
+        }
         public static async Task<UserDTO> GetByEmail(string userEmail)
         {            
             User user = await DatabaseManager.Instance.Users.FirstAsync(u => u.UserEmail == userEmail);
             return convertToUserDTO(user);        
+        }
+        public static async Task<int> Create(UserDTO userDTO)
+        {
+            User user = DatabaseManager.Instance.Users.Add(convertToUser(userDTO));
+            await DatabaseManager.Instance.SaveChangesAsync();
+            return user.UserId;
         }
     }
 }

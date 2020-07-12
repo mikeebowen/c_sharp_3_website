@@ -23,14 +23,24 @@ namespace MiniCStructure.Models
 
         private static MapperConfiguration config = new MapperConfiguration(c => c.CreateMap<UserDTO, User>().ReverseMap());
         private static IMapper mapper = config.CreateMapper();
-        private static User convertToUser(UserDTO user)
+        private static User convertToUser(UserDTO userDTO)
         {
-            return mapper.Map<UserDTO, User>(user);
+            return mapper.Map<UserDTO, User>(userDTO);
+        }
+        private static UserDTO convertoToUserDTO(User user)
+        {
+            return mapper.Map<User, UserDTO>(user);
         }
         public static async Task<User> GetByEmail(string userEmail)
         {
             UserDTO user = await UserDTO.GetByEmail(userEmail);
             return convertToUser(user);
+        }
+        public static async Task<User> Create(User user)
+        {
+            int id = await UserDTO.Create(convertoToUserDTO(user));
+            user.UserId = id;
+            return user;
         }
     }
 }
