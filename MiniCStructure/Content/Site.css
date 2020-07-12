@@ -22,3 +22,13 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.user-register-form__form-col {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.user-register-form__form {
+    width: 50%;
+}
