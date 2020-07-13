@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using MiniCStructureRepository.Models;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace MiniCStructure.Models
 {
@@ -16,7 +17,12 @@ namespace MiniCStructure.Models
         }
 
         public int UserId { get; set; }
+        [Required(ErrorMessage ="Email is required")]
+        [EmailAddress(ErrorMessage = "Please enter a valid email")]
+        [MinLength(2, ErrorMessage = "Email must be at least 2 characters")]
         public string UserEmail { get; set; }
+        [Required(ErrorMessage = "Password is required")]
+        [MinLength(2, ErrorMessage = "Password must be at least 2 characters")]
         public string UserPassword { get; set; }
         public bool UserIsAdmin { get; set; }
         public virtual ICollection<ClassDTO> Classes { get; set; }
@@ -36,11 +42,10 @@ namespace MiniCStructure.Models
             UserDTO user = await UserDTO.GetByEmail(userEmail);
             return convertToUser(user);
         }
-        public static async Task<User> Create(User user)
+        public static async Task<int> Create(User user)
         {
             int id = await UserDTO.Create(convertoToUserDTO(user));
-            user.UserId = id;
-            return user;
+            return id;
         }
     }
 }
