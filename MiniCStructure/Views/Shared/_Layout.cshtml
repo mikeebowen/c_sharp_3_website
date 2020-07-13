@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Learning center", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -25,6 +25,18 @@
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
+                @if (Session["user"] != null)
+                {
+                    MiniCStructure.Models.User user = (MiniCStructure.Models.User)Session["user"];
+                    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">@user.UserEmail</a></p>
+                }
+                else
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Register", "Index", "Register")</li>
+                        @*<li>@Html.ActionLink("Login", "Index", "Login")</li>*@
+                    </ul>
+                }
             </div>
         </div>
     </div>
