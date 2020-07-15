@@ -43,5 +43,17 @@ namespace MiniCStructureRepository.Models
             await DatabaseManager.Instance.SaveChangesAsync();
             return user.UserId;
         }
+        public static async Task<UserDTO> CheckPassword(string pwToCheck, string emailToCheck)
+        {
+            User user = await DatabaseManager.Instance.Users.FirstOrDefaultAsync(u => u.UserEmail == emailToCheck);
+            if (user != null && user.UserPassword == pwToCheck)
+            {
+                return convertToUserDTO(user);
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

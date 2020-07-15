@@ -47,5 +47,10 @@ namespace MiniCStructure.Models
             int id = await UserDTO.Create(convertoToUserDTO(user));
             return id;
         }
+        public static async Task<User> CheckPassword(string pwToCheck, string emailToCheck)
+        {
+            UserDTO userDTO = await UserDTO.CheckPassword(pwToCheck, emailToCheck);
+            return convertToUser(userDTO);
+        }
     }
 }
