@@ -106,5 +106,16 @@ namespace MiniCStructure.Controllers
             List<Class> classes = await Class.GetAll();
             return View(classes);
         }
+        [HttpGet]
+        public async Task<ActionResult> EnrollInClass()
+        {
+            List<Class> classes = await Class.GetAll();
+            return View(classes);
+        }
+        [HttpPost]
+        public ActionResult EnrollInClass(string foo)
+        {
+            return Redirect("/");
+        }
     }
 }
