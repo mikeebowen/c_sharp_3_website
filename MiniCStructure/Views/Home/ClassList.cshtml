@@ -1,0 +1,38 @@
+﻿@model IEnumerable<MiniCStructure.Models.Class>
+
+@{
+    ViewBag.Title = "ClassList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Classes</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @*@item.Price.ToString("C") this is the same as below*@
+            @string.Format("{0:C}", item.Price)
+        </td>
+    </tr>
+}
+
+</table>
