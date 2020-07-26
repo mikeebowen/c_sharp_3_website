@@ -31,7 +31,10 @@
                 @if (Session["user"] != null)
                 {
                     MiniCStructure.Models.User user = (MiniCStructure.Models.User)Session["user"];
-                    <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">@user.UserEmail</a></p>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a>Signed in as @user.UserEmail</a></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Home")</li>
+                    </ul>
                 }
                 else
                 {

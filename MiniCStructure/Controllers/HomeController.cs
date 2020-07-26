@@ -52,6 +52,12 @@ namespace MiniCStructure.Controllers
             }
         }
         [HttpGet]
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
         public ActionResult Register()
         {
             User newUser = new User();
