@@ -28,7 +28,10 @@ namespace MiniCStructure.Models
         public bool UserIsAdmin { get; set; }
         public virtual ICollection<Class> Classes { get; set; }
 
-        private static MapperConfiguration config = new MapperConfiguration(c => c.CreateMap<UserDTO, User>().ReverseMap());
+        private static MapperConfiguration config = new MapperConfiguration(cfg => {
+            cfg.CreateMap<UserDTO, User>().ReverseMap();
+            cfg.CreateMap<ClassDTO, Class>().ReverseMap();
+        });
         private static IMapper mapper = config.CreateMapper();
         private static User convertToUser(UserDTO userDTO)
         {
@@ -53,10 +56,10 @@ namespace MiniCStructure.Models
             UserDTO userDTO = await UserDTO.CheckPassword(pwToCheck, emailToCheck);
             return convertToUser(userDTO);
         }
-        public static async Task<int> AddClass(int classId, int userId)
+        public static async Task<User> AddClass(int classId, int userId)
         {
-            int ret = await UserDTO.AddClass(classId, userId);
-            return ret;
+            UserDTO userDTO = await UserDTO.AddClass(classId, userId);
+            return convertToUser(userDTO);
         }
     }
 }

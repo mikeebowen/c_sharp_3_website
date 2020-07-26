@@ -5,7 +5,7 @@
 <div class="jumbotron">
     <h1>The Learning Center</h1>
     <p class="lead">The place for technology classes.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    <p><a href="@Url.Action("ClassList", "Home")" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -17,7 +17,7 @@
     <div class="col-md-4">
         <h2 class="hompage__heading">Your enrolled classes</h2>
         <p>See the classes you are enrolled in.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" href="@Url.Action("StudentClasses", "Home")">Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2 class="hompage__heading">Enroll in a class</h2>

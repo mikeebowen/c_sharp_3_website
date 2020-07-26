@@ -51,12 +51,9 @@ namespace MiniCStructure.Controllers
                 return Redirect("/");
             }
         }
-        // GET: Register
         [HttpGet]
         public ActionResult Register()
         {
-            //User user = await MiniCStructure.Models.User.GetByEmail("admin");
-            //return Content(user.UserEmail);
             User newUser = new User();
             return View(newUser);
         }
@@ -121,8 +118,19 @@ namespace MiniCStructure.Controllers
                 return Redirect("/Home/Login");
             }
             MiniCStructure.Models.User user = (MiniCStructure.Models.User)Session["user"];
-            int foo = await Models.User.AddClass(classIdInt, user.UserId);
-            return Redirect("/");
+            User updatedUser = await Models.User.AddClass(classIdInt, user.UserId);
+            Session["user"] = updatedUser;
+            return Redirect("/Home/StudentClasses");
+        }
+        [HttpGet]
+        public ActionResult StudentClasses()
+        {
+            if (Session["user"] == null)
+            {
+                return Redirect("/Home/Login");
+            }
+            MiniCStructure.Models.User user = (MiniCStructure.Models.User)Session["user"];
+            return View(user.Classes);
         }
     }
 }

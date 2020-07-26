@@ -1,11 +1,11 @@
 ﻿@model IEnumerable<MiniCStructure.Models.Class>
 
 @{
-    ViewBag.Title = "ClassList";
+    ViewBag.Title = "StudentClasses";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Classes</h2>
+<h2>StudentClasses</h2>
 <table class="table">
     <tr>
         <th>
@@ -29,7 +29,6 @@
             @Html.DisplayFor(modelItem => item.ClassDescription)
         </td>
         <td>
-            @*@item.Price.ToString("C") this is the same as below*@
             @string.Format("{0:C}", item.ClassPrice)
         </td>
     </tr>

@@ -22,7 +22,10 @@ namespace MiniCStructureRepository.Models
         public bool UserIsAdmin { get; set; }
         public virtual ICollection<ClassDTO> Classes { get; set; }
 
-        private static MapperConfiguration config = new MapperConfiguration(c => c.CreateMap<User, UserDTO>().ReverseMap());
+        private static MapperConfiguration config = new MapperConfiguration(cfg => {
+            cfg.CreateMap<User, UserDTO>().ReverseMap();
+            cfg.CreateMap<Class, ClassDTO>().ReverseMap();
+        });
         private static IMapper mapper = config.CreateMapper();
         private static UserDTO convertToUserDTO(User user)
         {
@@ -55,12 +58,13 @@ namespace MiniCStructureRepository.Models
                 return null;
             }
         }
-        public static async Task<int> AddClass(int classId, int userId)
+        public static async Task<UserDTO> AddClass(int classId, int userId)
         {
             User user = await DatabaseManager.Instance.Users.FirstAsync(u => u.UserId == userId);
             Class cls = await DatabaseManager.Instance.Classes.FirstAsync(c => c.ClassId == classId);
             user.Classes.Add(cls);
-            return await DatabaseManager.Instance.SaveChangesAsync();
+            await DatabaseManager.Instance.SaveChangesAsync();
+            return convertToUserDTO(user);
         }
     }
 }

@@ -175,6 +175,7 @@
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\ClassList.cshtml" />
     <Content Include="Views\Home\EnrollInClass.cshtml" />
+    <Content Include="Views\Home\StudentClasses.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

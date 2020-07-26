@@ -15,48 +15,10 @@
             <select name="classId" id="classId" class="form-control enroll-select" style="display: inline;">
                 @foreach (Class c in Model)
                 {
-                    <option value="@c.ClassId">@Html.DisplayFor(modelItem => c.Name)</option>
+                    <option value="@c.ClassId">@Html.DisplayFor(modelItem => c.ClassName)</option>
                 }
             </select>
             <button type="submit" class="btn btn-default">Add Class</button>
         </form>
     </div>
 </div>
-@*<p>
-    @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Description)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Price)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.ClassId }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.ClassId }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.ClassId })
-                </td>
-            </tr>
-        }
-
-    </table>*@

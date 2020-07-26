@@ -21,9 +21,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Available Classes", "ClassList", "Home")</li>
+                    @if (Session["user"] != null)
+                    {
+                    <li>@Html.ActionLink("Enroll in a Class", "EnrollInClass", "Home")</li>
+                    <li>@Html.ActionLink("My Classes", "StudentClasses", "Home")</li>
+                    }
                 </ul>
                 @if (Session["user"] != null)
                 {
@@ -44,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - The Learning Center</p>
         </footer>
     </div>
 
