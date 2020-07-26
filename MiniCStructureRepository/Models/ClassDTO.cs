@@ -30,5 +30,10 @@ namespace MiniCStructureRepository.Models
             List<Class> classes = await DatabaseManager.Instance.Classes.ToListAsync();
             return classes.ConvertAll(c => convertToClassDTO(c));
         }
+        public static async Task<ClassDTO> GetByID(int id)
+        {
+            Class cls = await DatabaseManager.Instance.Classes.FirstOrDefaultAsync(c => c.ClassId == id);
+            return convertToClassDTO(cls);
+        }
     }
 }

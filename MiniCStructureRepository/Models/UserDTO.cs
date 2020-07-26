@@ -33,9 +33,9 @@ namespace MiniCStructureRepository.Models
             return mapper.Map<UserDTO, User>(userDTO);
         }
         public static async Task<UserDTO> GetByEmail(string userEmail)
-        {            
+        {
             User user = await DatabaseManager.Instance.Users.FirstAsync(u => u.UserEmail == userEmail);
-            return convertToUserDTO(user);        
+            return convertToUserDTO(user);
         }
         public static async Task<int> Create(UserDTO userDTO)
         {
@@ -54,6 +54,13 @@ namespace MiniCStructureRepository.Models
             {
                 return null;
             }
+        }
+        public static async Task<int> AddClass(int classId, int userId)
+        {
+            User user = await DatabaseManager.Instance.Users.FirstAsync(u => u.UserId == userId);
+            Class cls = await DatabaseManager.Instance.Classes.FirstAsync(c => c.ClassId == classId);
+            user.Classes.Add(cls);
+            return await DatabaseManager.Instance.SaveChangesAsync();
         }
     }
 }

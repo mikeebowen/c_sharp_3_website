@@ -12,7 +12,7 @@
     </div>
     <div class="col-sm-12 form-group">
         <form method="post">
-            <select name="foo" id="foo" class="form-control enroll-select" style="display: inline;">
+            <select name="classId" id="classId" class="form-control enroll-select" style="display: inline;">
                 @foreach (Class c in Model)
                 {
                     <option value="@c.ClassId">@Html.DisplayFor(modelItem => c.Name)</option>

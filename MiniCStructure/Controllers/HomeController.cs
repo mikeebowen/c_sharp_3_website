@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Infrastructure;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -113,8 +114,14 @@ namespace MiniCStructure.Controllers
             return View(classes);
         }
         [HttpPost]
-        public ActionResult EnrollInClass(string foo)
+        public async Task<ActionResult> EnrollInClass(string classId)
         {
+            int classIdInt = int.Parse(classId);
+            if (Session["user"] == null) {
+                return Redirect("/Home/Login");
+            }
+            MiniCStructure.Models.User user = (MiniCStructure.Models.User)Session["user"];
+            int foo = await Models.User.AddClass(classIdInt, user.UserId);
             return Redirect("/");
         }
     }

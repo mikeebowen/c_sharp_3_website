@@ -6,6 +6,7 @@ using System.Web;
 using MiniCStructureRepository.Models;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.Ajax.Utilities;
 
 namespace MiniCStructure.Models
 {
@@ -13,7 +14,7 @@ namespace MiniCStructure.Models
     {
         public User()
         {
-            this.Classes = new List<ClassDTO>();
+            this.Classes = new List<Class>();
         }
 
         public int UserId { get; set; }
@@ -25,7 +26,7 @@ namespace MiniCStructure.Models
         [MinLength(2, ErrorMessage = "Password must be at least 2 characters")]
         public string UserPassword { get; set; }
         public bool UserIsAdmin { get; set; }
-        public virtual ICollection<ClassDTO> Classes { get; set; }
+        public virtual ICollection<Class> Classes { get; set; }
 
         private static MapperConfiguration config = new MapperConfiguration(c => c.CreateMap<UserDTO, User>().ReverseMap());
         private static IMapper mapper = config.CreateMapper();
@@ -51,6 +52,11 @@ namespace MiniCStructure.Models
         {
             UserDTO userDTO = await UserDTO.CheckPassword(pwToCheck, emailToCheck);
             return convertToUser(userDTO);
+        }
+        public static async Task<int> AddClass(int classId, int userId)
+        {
+            int ret = await UserDTO.AddClass(classId, userId);
+            return ret;
         }
     }
 }

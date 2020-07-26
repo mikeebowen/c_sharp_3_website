@@ -27,10 +27,19 @@ namespace MiniCStructure.Models
         {
             return mapper.Map<ClassDTO, Class>(classDTO);
         }
+        private static ClassDTO convertToClassDTO(Class cls)
+        {
+            return mapper.Map<Class, ClassDTO>(cls);
+        }
         public static async Task<List<Class>> GetAll()
         {
             List<ClassDTO> classDTOs = await ClassDTO.GetAll();
             return classDTOs.ConvertAll(c => convertToClass(c));
+        }
+        public static async Task<Class> GetById(int id)
+        {
+            ClassDTO classDTO = await ClassDTO.GetByID(id);
+            return convertToClass(classDTO);
         }
     }
 }
