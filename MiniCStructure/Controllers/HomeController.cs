@@ -87,15 +87,15 @@ namespace MiniCStructure.Controllers
             try
             {
                 int id = await MiniCStructure.Models.User.Create(newUser);
-                newUser.UserId = id;
-                Session["user"] = newUser;
-                return Redirect("/");
-            }
-            catch (DbUpdateException ex)
-            {
+                if (id > 0)
+                {
+                    newUser.UserId = id;
+                    Session["user"] = newUser;
+                    return Redirect("/");
+                }
                 errors.Add("That email has already been registered");
                 TempData["errorMessages"] = errors;
-                return View(newUser);
+                return View(new User());
             }
             catch (Exception ex)
             {

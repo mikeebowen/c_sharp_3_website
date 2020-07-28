@@ -42,9 +42,13 @@ namespace MiniCStructureRepository.Models
         }
         public static async Task<int> Create(UserDTO userDTO)
         {
-            User user = DatabaseManager.Instance.Users.Add(convertToUser(userDTO));
-            await DatabaseManager.Instance.SaveChangesAsync();
-            return user.UserId;
+            if (!DatabaseManager.Instance.Users.Any(u => u.UserEmail == userDTO.UserEmail))
+            {
+                User user = DatabaseManager.Instance.Users.Add(convertToUser(userDTO));
+                await DatabaseManager.Instance.SaveChangesAsync();
+                return user.UserId;
+            }
+            return 0;
         }
         public static async Task<UserDTO> CheckPassword(string pwToCheck, string emailToCheck)
         {
